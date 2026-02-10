@@ -5,6 +5,8 @@ RUN apt-get update \
     libcurl4-openssl-dev \
     libssl-dev \
     libxml2-dev \
+    zlib1g-dev \
+    libsodium-dev \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -17,4 +19,4 @@ RUN R -e "install.packages(c('plumber','jsonlite'), repos='https://cloud.r-proje
 ENV PORT=8787
 EXPOSE 8787
 
-CMD [\"Rscript\", \"run_egfr_slope_api.R\"]
+CMD Rscript /app/run_egfr_slope_api.R
